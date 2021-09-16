@@ -19,7 +19,7 @@ for (int i = 2; i * i < isPrime.size(); ++i)
  * Stores in an std::vector<ll> the factorial of a number (without modulo)
  * By default it calculates up to 20.
  */
-std::vector<ll> fact(20 + 1, 1);
+std::vector<long long> fact(20 + 1, 1);
 fact[0] = 1;
 for (int i = 1; i < fact.size(); ++i) fact[i] = i * fact[i - 1];
 
