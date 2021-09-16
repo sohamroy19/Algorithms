@@ -1,2 +1,2 @@
 # CP-Algorithms
-Some algorithms and data structures used in Competetive Programming
+Some algorithms and data structures used in Competitive Programming

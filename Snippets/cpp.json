@@ -1,0 +1,146 @@
+// VS Code User snippets file for C++, usually placed in %APPDATA%\Code\User\snippets\
+// Possible variables are: $1, $2 for tab stops, $0 for the final cursor position, and
+// ${1:label}, ${2:another} for placeholders. Placeholders with the same ids are connected.
+{
+    "for CP with testcases": {
+        "prefix": "tcCompi",
+        "body": [
+            "#include <bits/stdc++.h>",
+            "",
+            "#define fi(n) for (int i = 0; i < n; ++i)",
+            "#define fj(n) for (int j = 0; j < n; ++j)",
+            "",
+            "using namespace std;",
+            "using ll = long long;",
+            "using vi = vector<int>;",
+            "using vvi = vector<vi>;",
+            "",
+            "void solve() {",
+            "\tint n;",
+            "\tcin >> n;",
+            "\t$0",
+            "}",
+            "",
+            "int main() {",
+            "\tios_base::sync_with_stdio(false);",
+            "\tcin.tie(NULL);",
+            "\tint tc;",
+            "\tcin >> tc;",
+            "\tfi(tc) solve();",
+            "\treturn 0;",
+            "}"
+        ],
+        "description": "CP snippet with testcases"
+    },
+    "for CP without testcases": {
+        "prefix": "ntCompi",
+        "body": [
+            "#include <bits/stdc++.h>",
+            "",
+            "#define fi(n) for (int i = 0; i < n; ++i)",
+            "#define fj(n) for (int j = 0; j < n; ++j)",
+            "",
+            "using namespace std;",
+            "using ll = long long;",
+            "using vi = vector<int>;",
+            "using vvi = vector<vi>;",
+            "",
+            "void solve() {",
+            "\tint n;",
+            "\tcin >> n;",
+            "\t$0",
+            "}",
+            "",
+            "int main() {",
+            "\tios_base::sync_with_stdio(false);",
+            "\tcin.tie(NULL);",
+            "\tsolve();",
+            "\treturn 0;",
+            "}"
+        ],
+        "description": "CP snippet without test cases"
+    },
+    "for CP with modulo arithmetic": {
+        "prefix": "mCompi",
+        "body": [
+            "#include <bits/stdc++.h>",
+            "",
+            "#define MOD 1'000'000'007 // 998'244'353",
+            "#define fi(n) for (int i = 0; i < n; ++i)",
+            "#define fj(n) for (int j = 0; j < n; ++j)",
+            "",
+            "using namespace std;",
+            "using ll = long long;",
+            "using vi = vector<int>;",
+            "using vvi = vector<vi>;",
+            "",
+            "vi fact(500'001);",
+            "ll power(ll base, ll exp);",
+            "ll invM(ll a);",
+            "ll nPr(int n, int r);",
+            "ll nCr(int n, int r);",
+            "",
+            "void solve() {",
+            "\tint n;",
+            "\tcin >> n;",
+            "\t$0",
+            "}",
+            "",
+            "int main() {",
+            "\tios_base::sync_with_stdio(false);",
+            "\tcin.tie(NULL);",
+            "\tfact[0] = 1;",
+            "\tfi(fact.size() - 1) fact[i + 1] = (ll)(i + 1) * fact[i] % MOD;",
+            "\tint tc;",
+            "\tcin >> tc;",
+            "\tfi(tc) solve();",
+            "\treturn 0;",
+            "}",
+            "",
+            "ll power(ll a, ll b) {",
+            "\tll c = 1;",
+            "\ta %= MOD;",
+            "\twhile (b > 0) {",
+            "\t\tif (b % 2 == 1) c = c * a % MOD;",
+            "\t\ta = a * a % MOD;",
+            "\t\tb /= 2;",
+            "\t}",
+            "\treturn c;",
+            "}",
+            "",
+            "ll invM(ll a) { return power(a, MOD - 2); }",
+            "ll nPr(int n, int r) { return (n < r) ? 0 : fact[n] * invM(fact[n - r]) % MOD; }",
+            "ll nCr(int n, int r) { return (n < r) ? 0 : fact[n] * invM(fact[r]) % MOD * invM(fact[n - r]) % MOD; }"
+        ],
+        "description": "CP snippet with modulo arithmetic and testcases"
+    },
+    "take n inputs into vector": {
+        "prefix": "nInputs",
+        "body": [
+            "vi a(n);",
+            "fi(n) { cin >> a[i]; }",
+            "$0"
+        ],
+        "description": "CP snippet for inputs to n-dimensional vector<int> a"
+    },
+    "sieve of Eratosthenes": {
+        "prefix": "sieve",
+        "body": [
+            "std::vector<int> isPrime(100'000$0 + 1, 1);",
+            "for (int i = 2; i * i < isPrime.size(); ++i)",
+            "\tif (isPrime[i])",
+            "\t\tfor (int j = i * i; j < isPrime.size(); j += i)",
+            "\t\t\tisPrime[j] = 0;"
+        ],
+        "description": "Snippet for sieve of Eratosthenes"
+    },
+    "factorials": {
+        "prefix": "factorials",
+        "body": [
+            "std::vector<ll> fact(20$0 + 1, 1);",
+            "fact[0] = 1;",
+            "for (int i = 1; i < fact.size(); ++i) fact[i] = i * fact[i - 1];"
+        ],
+        "description": "Snippet for factorials without modulo"
+    }
+}
