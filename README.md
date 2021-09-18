@@ -1,2 +1,6 @@
-# CP-Algorithms
-Some algorithms and data structures used in Competitive Programming
+# CP-DSA
+Some data structures and algorithms used in Competitive Programming, implemented in C++.  
+  
+Resources referred:
+- https://www.programiz.com/dsa
+- https://cp-algorithms.com/
