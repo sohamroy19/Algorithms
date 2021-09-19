@@ -58,6 +58,10 @@ public:
         return top + 1;
     }
 
+    int maxCapacity() {
+        return capacity;
+    }
+
     bool isEmpty() {
         return top == -1;
     }
