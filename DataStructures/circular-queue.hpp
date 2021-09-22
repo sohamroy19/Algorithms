@@ -1,23 +1,23 @@
-#ifndef QUEUE_HPP
-#define QUEUE_HPP
+#ifndef CIRCULAR_QUEUE_HPP
+#define CIRCULAR_QUEUE_HPP
 
 #include <stdexcept>
 
 template <class T>
-class Queue {
+class CircularQueue {
 private:
     T *arr;
     int capacity;
     int front, rear;
 
 public:
-    Queue() : capacity(0), front(0), rear(-1) {}
+    CircularQueue() : capacity(0), front(0), rear(-1) {}
 
-    Queue(int size) : capacity(size), front(0), rear(-1) {
+    CircularQueue(int size) : capacity(size), front(0), rear(-1) {
         arr = new T[capacity];
     }
 
-    ~Queue() {
+    ~CircularQueue() {
         delete[] arr;
     }
 
@@ -25,6 +25,7 @@ public:
         if (capacity == 0) {
             capacity = 1;
             arr = new T[capacity];
+            front = rear = 0;
         } else if (isFull()) {
             T *tempArr = new T[capacity * 2];
 
@@ -37,20 +38,21 @@ public:
             arr = tempArr;
         }
 
-        arr[++rear] = t;
+        rear = (rear + 1) % capacity;
+        arr[rear] = t;
     }
 
     T dequeue() {
+        int oldFront = front;
         if (isEmpty()) {
             throw std::out_of_range("Cannot dequeue from an empty queue.");
         } else if (size() == 1) {
-            int oldFront = front;
             front = 0;
             rear = -1;
-            return arr[oldFront];
         } else {
-            return arr[front++];
+            front = (front + 1) % capacity;
         }
+        return arr[oldFront];
     }
 
     T peek() {
@@ -61,7 +63,8 @@ public:
     }
 
     int size() {
-        return rear - front + 1;
+        if (isEmpty()) return 0;
+        return (rear >= front) ? rear - front + 1 : rear + n - front + 1;
     }
 
     int maxCapacity() {
@@ -69,12 +72,12 @@ public:
     }
 
     bool isEmpty() {
-        return size() == 0;
+        return rear == -1;
     }
 
     bool isFull() {
-        return rear == capacity - 1;
+        return front == (rear + 1) % capacity;
     }
 };
 
-#endif /* QUEUE_HPP */
+#endif /* CIRCULAR_QUEUE_HPP */
