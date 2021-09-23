@@ -4,20 +4,20 @@
 #include <stdexcept>
 
 template <class T>
-class CircularQueue {
+class Deque {
 private:
     T *arr;
     int capacity;
     int front, rear;
 
 public:
-    CircularQueue() : capacity(0), front(0), rear(-1) {}
+    Deque() : capacity(0), front(0), rear(-1) {}
 
-    CircularQueue(int size) : capacity(size), front(0), rear(-1) {
+    Deque(int size) : capacity(size), front(0), rear(-1) {
         arr = new T[capacity];
     }
 
-    ~CircularQueue() {
+    ~Deque() {
         delete[] arr;
     }
 
