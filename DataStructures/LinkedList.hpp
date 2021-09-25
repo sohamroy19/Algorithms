@@ -25,6 +25,7 @@ public:
 
     void push(T t);
     T pop();
+    void insertAt(T t, int index);
 
     bool isEmpty();
     int size();
@@ -59,6 +60,21 @@ T LinkedList<T>::pop() {
     --currentSize;
 
     return oldHead->data;
+}
+
+template <class T>
+void LinkedList<T>::insertAt(T t, int index) {
+    std::unique_ptr<NodeLL> newHead = std::make_unique<NodeLL>(t);
+    std::unique_ptr<NodeLL> *nextNode = &head;
+
+    for (int i = 0; i < index; ++i) {
+        if (*nextNode) nextNode = &(*nextNode->next);
+    }
+
+    if (*nextNode) newHead->next = std::move(*nextNode);
+
+    *nextNode = std::move(newHead);
+    ++currentSize;
 }
 
 template <class T>
