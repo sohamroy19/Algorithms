@@ -49,7 +49,7 @@ template <class T>
 void Deque<T>::reserve(int newCapacity) {
     T *tempArr = new T[newCapacity];
 
-    if (rear != -1 && rear < front) rear += n;
+    if (!isEmpty() && rear < front) rear += n;
     for (int i = front; i <= rear; ++i) {
         tempArr[i - front] = arr[i % capacity];
     }
@@ -150,8 +150,8 @@ inline int Deque<T>::maxCapacity() { return capacity; }
 
 template <class T>
 inline int Deque<T>::size() {
-    if (isEmpty()) return 0;
-    return (rear >= front) ? rear - front + 1 : rear + n - front + 1;
+    return isEmpty() ? 0 : (rear >= front) ? rear - front + 1
+                                           : rear + n - front + 1;
 }
 
 #endif /* DEQUE_HPP */
