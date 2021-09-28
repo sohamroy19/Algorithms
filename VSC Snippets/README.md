@@ -1,4 +1,4 @@
-# Snippets
+# VSC Snippets
 Snippets I use in VS Code to save some typing.
 
 [cpp.json](cpp.json) is my VS Code User snippets file for C++, usually placed in `%APPDATA%\Code\User\snippets\` in Windows.  
