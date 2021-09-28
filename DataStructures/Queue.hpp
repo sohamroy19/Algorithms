@@ -35,7 +35,7 @@ Queue<T>::Queue(int initialCapacity) : capacity(initialCapacity), front(0), rear
 }
 
 template <class T>
-~Queue<T>::Queue() {
+Queue<T>::~Queue() {
     delete[] arr;
 }
 
