@@ -71,11 +71,15 @@ T LinkedList<T>::peek() {
 
 template <class T>
 void LinkedList<T>::insert(T t, int index) {
+    if (index > size()) {
+        throw std::out_of_range("Index out of range.");
+    }
+
     std::unique_ptr<NodeLL> newNode = std::make_unique<NodeLL>(t);
     std::unique_ptr<NodeLL> *atNode = &head;
 
     for (int i = 0; i < index; ++i) {
-        if (*atNode) atNode = &((*atNode)->next);
+        atNode = &((*atNode)->next);
     }
 
     if (*atNode) newNode->next = std::move(*atNode);
@@ -86,14 +90,14 @@ void LinkedList<T>::insert(T t, int index) {
 
 template <class T>
 void LinkedList<T>::remove(int index) {
-    if (isEmpty()) {
-        throw std::out_of_range("Cannot delete at an empty linked list.");
+    if (index >= size()) {
+        throw std::out_of_range("Index out of range.");
     }
 
     std::unique_ptr<NodeLL> *atNode = &head;
 
     for (int i = 0; i < index; ++i) {
-        if (*atNode) atNode = &((*atNode)->next);
+        atNode = &((*atNode)->next);
     }
 
     if (*atNode) {

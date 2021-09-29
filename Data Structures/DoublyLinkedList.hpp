@@ -74,10 +74,14 @@ T DoublyLinkedList<T>::peek() {
 
 template <class T>
 void DoublyLinkedList<T>::insert(T t, int index) {
+    if (index > size()) {
+        throw std::out_of_range("Index out of range.");
+    }
+
     std::unique_ptr<NodeDLL> *atNode = &head;
 
     for (int i = 0; i < index; ++i) {
-        if (*atNode) atNode = &((*atNode)->next);
+        atNode = &((*atNode)->next);
     }
 
     std::unique_ptr<NodeDLL> newNode = std::make_unique<NodeDLL>(t, nullptr);
@@ -94,14 +98,14 @@ void DoublyLinkedList<T>::insert(T t, int index) {
 
 template <class T>
 void DoublyLinkedList<T>::remove(int index) {
-    if (isEmpty()) {
-        throw std::out_of_range("Cannot delete at an empty linked list.");
+    if (index >= size()) {
+        throw std::out_of_range("Index out of range.");
     }
 
     std::unique_ptr<NodeDLL> *atNode = &head;
 
     for (int i = 0; i < index; ++i) {
-        if (*atNode) atNode = &((*atNode)->next);
+        atNode = &((*atNode)->next);
     }
 
     if (*atNode) {
