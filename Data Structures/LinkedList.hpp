@@ -27,8 +27,8 @@ public:
     T pop();
     T peek();
 
-    void insertAt(T t, int index);
-    void deleteAt(int index);
+    void insert(T t, int index);
+    void remove(int index);
 
     bool isEmpty();
     int size();
@@ -44,12 +44,7 @@ LinkedList<T>::~LinkedList() {
 
 template <class T>
 void LinkedList<T>::push(T t) {
-    std::unique_ptr<NodeLL> newHead = std::make_unique<NodeLL>(t);
-
-    if (head) newHead->next = std::move(head);
-
-    head = std::move(newHead);
-    ++currentSize;
+    insert(t, 0);
 }
 
 template <class T>
@@ -68,14 +63,14 @@ T LinkedList<T>::pop() {
 template <class T>
 T LinkedList<T>::peek() {
     if (isEmpty()) {
-        throw std::out_of_range("Cannot pop from an empty linked list.");
+        throw std::out_of_range("Cannot peek into an empty linked list.");
     }
 
     return head->data;
 }
 
 template <class T>
-void LinkedList<T>::insertAt(T t, int index) {
+void LinkedList<T>::insert(T t, int index) {
     std::unique_ptr<NodeLL> newNode = std::make_unique<NodeLL>(t);
     std::unique_ptr<NodeLL> *atNode = &head;
 
@@ -90,7 +85,7 @@ void LinkedList<T>::insertAt(T t, int index) {
 }
 
 template <class T>
-void LinkedList<T>::deleteAt(int index) {
+void LinkedList<T>::remove(int index) {
     if (isEmpty()) {
         throw std::out_of_range("Cannot delete at an empty linked list.");
     }
