@@ -1,6 +1,9 @@
 /**
- * Time  :  O(n)
- * Space :  O(1)
+ * Worst case : O(n)
+ * Average    : O(n)
+ * Best case  : O(1)
+ * 
+ * Space      : O(1)
  */
 
 #include <vector>

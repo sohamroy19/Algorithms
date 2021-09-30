@@ -1,6 +1,9 @@
 /**
- * Time  :  O(n^2)
- * Space :  O(1)
+ * Worst case : O(n^2) comparisons, O(n^2) swaps
+ * Average    : O(n^2) comparisons, O(n^2) swaps
+ * Best case  :  O(n)  comparisons,  O(1)  swaps
+ * 
+ * Space      : O(1)
  */
 
 #include <vector>
