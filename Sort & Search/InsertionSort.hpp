@@ -6,7 +6,6 @@
  * Space      : O(1)
  */
 
-#include <iostream>
 #include <vector>
 
 template <class T>
@@ -16,8 +15,7 @@ void insertionSort(std::vector<T> &arr) {
 
         int j = i - 1;
         while (j >= 0 && arr[j] > temp) {
-            arr[j + 1] = std::move(arr[j]); // shift larger element rightwards
-            --j;
+            arr[j + 1] = std::move(arr[j--]); // shift larger element rightwards
         }
 
         arr[j + 1] = std::move(temp);
