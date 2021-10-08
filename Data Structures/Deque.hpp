@@ -41,7 +41,7 @@ Deque<T>::Deque(int initialCapacity) : capacity(initialCapacity), front(0), rear
 }
 
 template <class T>
-~Deque<T>::Deque() {
+Deque<T>::~Deque() {
     delete[] arr;
 }
 
