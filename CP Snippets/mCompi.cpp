@@ -32,7 +32,7 @@ void solve() {
 
 int main() {
     ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+    cin.tie(nullptr);
     fact[0] = 1;
     fi(fact.size() - 1) fact[i + 1] = (ll)(i + 1) * fact[i] % MOD;
     int tc;
