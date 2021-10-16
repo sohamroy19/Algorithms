@@ -9,6 +9,8 @@ private:
     T *arr;
     int currentSize, capacity;
 
+    void heapifySubtree(int index);
+
 public:
     Heap();
     Heap(T *arr, int size);
@@ -42,6 +44,28 @@ Heap<T>::~Heap() {
 }
 
 template <class T>
+void Heap<T>::heapify() {
+    for (int i = currentSize / 2 - 1; i >= 0; --i) {
+        heapifySubtree(i);
+    }
+}
+
+template <class T>
+void Heap<T>::heapifySubtree(int index) {
+    int l = 2 * index + 1, r = 2 * index + 2;
+    int target = index;
+
+    if (arr[l] > arr[target]) target = l;
+    if (r < currentSize && arr[r] > arr[target]) target = r;
+
+    if (target != index) {
+        using std::swap; // enable ADL
+        swap(arr[index], arr[target]);
+        heapifySubtree(target);
+    }
+}
+
+template <class T>
 void Heap<T>::reserve(int newCapacity) {
     T *tempArr = new T[newCapacity];
 
@@ -52,6 +76,40 @@ void Heap<T>::reserve(int newCapacity) {
     delete[] arr;
     arr = tempArr;
     capacity = newCapacity;
+}
+
+template <class T>
+void Heap<T>::push(T t) {
+    if (maxCapacity() == 0) {
+        reserve(1);
+    } else if (isFull()) {
+        reserve(capacity * 2);
+    }
+
+    arr[currentSize++];
+    heapify();
+}
+
+template <class T>
+T Heap<T>::pop() {
+    if (isEmpty()) {
+        throw std::out_of_range("Cannot pop from an empty heap.");
+    }
+
+    using std::swap; // enable ADL
+    swap(arr[0], arr[--currentSize]);
+    heapify();
+
+    return arr[currentSize];
+}
+
+template <class T>
+T Heap<T>::peek() {
+    if (isEmpty()) {
+        throw std::out_of_range("Cannot peek into an empty heap.");
+    }
+
+    return arr[0];
 }
 
 template <class T>
