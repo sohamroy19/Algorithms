@@ -24,8 +24,8 @@ public:
     T pop();
     T peek();
 
-    bool isEmpty();
-    bool isFull();
+    bool empty();
+    bool full();
     int maxCapacity();
     int size();
 };
@@ -82,7 +82,7 @@ template <class T>
 void Heap<T>::push(T t) {
     if (maxCapacity() == 0) {
         reserve(1);
-    } else if (isFull()) {
+    } else if (full()) {
         reserve(capacity * 2);
     }
 
@@ -92,7 +92,7 @@ void Heap<T>::push(T t) {
 
 template <class T>
 T Heap<T>::pop() {
-    if (isEmpty()) {
+    if (empty()) {
         throw std::out_of_range("Cannot pop from an empty heap.");
     }
 
@@ -105,7 +105,7 @@ T Heap<T>::pop() {
 
 template <class T>
 T Heap<T>::peek() {
-    if (isEmpty()) {
+    if (empty()) {
         throw std::out_of_range("Cannot peek into an empty heap.");
     }
 
@@ -113,10 +113,10 @@ T Heap<T>::peek() {
 }
 
 template <class T>
-inline bool Heap<T>::isEmpty() { return size() == 0; }
+inline bool Heap<T>::empty() { return size() == 0; }
 
 template <class T>
-inline bool Heap<T>::isFull() { return size() == maxCapacity(); }
+inline bool Heap<T>::full() { return size() == maxCapacity(); }
 
 template <class T>
 inline int Heap<T>::maxCapacity() { return capacity; }

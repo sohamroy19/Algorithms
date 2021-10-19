@@ -26,8 +26,8 @@ public:
     void enqueue(T t);
     T dequeue();
 
-    bool isEmpty();
-    bool isFull();
+    bool empty();
+    bool full();
     int maxCapacity();
     int size();
 };
@@ -49,7 +49,7 @@ template <class T>
 void Deque<T>::reserve(int newCapacity) {
     T *tempArr = new T[newCapacity];
 
-    if (!isEmpty() && rear < front) rear += n;
+    if (!empty() && rear < front) rear += n;
     for (int i = front; i <= rear; ++i) {
         tempArr[i - front] = arr[i % capacity];
     }
@@ -65,7 +65,7 @@ template <class T>
 void Deque<T>::pushBack(T t) {
     if (maxCapacity() == 0) {
         reserve(1);
-    } else if (isFull()) {
+    } else if (full()) {
         reserve(capacity * 2);
     }
 
@@ -77,7 +77,7 @@ template <class T>
 void Deque<T>::pushFront(T t) {
     if (maxCapacity() == 0) {
         reserve(1);
-    } else if (isFull()) {
+    } else if (full()) {
         reserve(capacity * 2);
     }
 
@@ -89,7 +89,7 @@ template <class T>
 T Deque<T>::popBack() {
     int oldRear = rear;
 
-    if (isEmpty()) {
+    if (empty()) {
         throw std::out_of_range("Cannot dequeue from an empty deque.");
     } else if (size() == 1) {
         front = 0;
@@ -105,7 +105,7 @@ template <class T>
 T Deque<T>::popFront() {
     int oldFront = front;
 
-    if (isEmpty()) {
+    if (empty()) {
         throw std::out_of_range("Cannot dequeue from an empty deque.");
     } else if (size() == 1) {
         front = 0;
@@ -119,7 +119,7 @@ T Deque<T>::popFront() {
 
 template <class T>
 T Deque<T>::peekBack() {
-    if (isEmpty()) {
+    if (empty()) {
         throw std::out_of_range("Cannot peek into an empty deque.");
     }
     return arr[rear];
@@ -127,7 +127,7 @@ T Deque<T>::peekBack() {
 
 template <class T>
 T Deque<T>::peekFront() {
-    if (isEmpty()) {
+    if (empty()) {
         throw std::out_of_range("Cannot peek into an empty deque.");
     }
     return arr[front];
@@ -140,17 +140,17 @@ template <class T>
 inline T Deque<T>::dequeue() { return popFront(); }
 
 template <class T>
-inline bool Deque<T>::isEmpty() { return rear == -1; }
+inline bool Deque<T>::empty() { return rear == -1; }
 
 template <class T>
-inline bool Deque<T>::isFull() { return front == (rear + 1) % capacity; }
+inline bool Deque<T>::full() { return front == (rear + 1) % capacity; }
 
 template <class T>
 inline int Deque<T>::maxCapacity() { return capacity; }
 
 template <class T>
 inline int Deque<T>::size() {
-    return isEmpty() ? 0 : (rear >= front) ? rear - front + 1
+    return empty() ? 0 : (rear >= front) ? rear - front + 1
                                            : rear + n - front + 1;
 }
 

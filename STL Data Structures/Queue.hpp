@@ -20,8 +20,8 @@ public:
     T dequeue();
     T peek();
 
-    bool isEmpty();
-    bool isFull();
+    bool empty();
+    bool full();
     int maxCapacity();
     int size();
 };
@@ -58,7 +58,7 @@ template <class T>
 void Queue<T>::enqueue(T t) {
     if (maxCapacity() == 0) {
         reserve(1);
-    } else if (isFull()) {
+    } else if (full()) {
         reserve(capacity * 2);
     }
 
@@ -67,7 +67,7 @@ void Queue<T>::enqueue(T t) {
 
 template <class T>
 T Queue<T>::dequeue() {
-    if (isEmpty()) {
+    if (empty()) {
         throw std::out_of_range("Cannot dequeue from an empty queue.");
     } else if (size() == 1) {
         int oldFront = front;
@@ -81,17 +81,17 @@ T Queue<T>::dequeue() {
 
 template <class T>
 T Queue<T>::peek() {
-    if (isEmpty()) {
+    if (empty()) {
         throw std::out_of_range("Cannot peek into an empty queue.");
     }
     return arr[front];
 }
 
 template <class T>
-inline bool Queue<T>::isEmpty() { return size() == 0; }
+inline bool Queue<T>::empty() { return size() == 0; }
 
 template <class T>
-inline bool Queue<T>::isFull() { return rear == capacity - 1; }
+inline bool Queue<T>::full() { return rear == capacity - 1; }
 
 template <class T>
 inline int Queue<T>::maxCapacity() { return capacity; }

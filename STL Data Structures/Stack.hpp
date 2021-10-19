@@ -20,8 +20,8 @@ public:
     T pop();
     T peek();
 
-    bool isEmpty();
-    bool isFull();
+    bool empty();
+    bool full();
     int maxCapacity();
     int size();
 };
@@ -58,7 +58,7 @@ void Stack<T>::push(T t) {
     if (capacity == 0) {
         arr = new T[1];
         capacity = 1;
-    } else if (isFull()) {
+    } else if (full()) {
         reserve(capacity * 2);
     }
 
@@ -67,7 +67,7 @@ void Stack<T>::push(T t) {
 
 template <class T>
 T Stack<T>::pop() {
-    if (isEmpty()) {
+    if (empty()) {
         throw std::out_of_range("Cannot pop from an empty stack.");
     }
     return arr[top--];
@@ -75,17 +75,17 @@ T Stack<T>::pop() {
 
 template <class T>
 T Stack<T>::peek() {
-    if (isEmpty()) {
+    if (empty()) {
         throw std::out_of_range("Cannot peek into an empty stack.");
     }
     return arr[top];
 }
 
 template <class T>
-inline bool Stack<T>::isEmpty() { return top == -1; }
+inline bool Stack<T>::empty() { return top == -1; }
 
 template <class T>
-inline bool Stack<T>::isFull() { return top == capacity - 1; }
+inline bool Stack<T>::full() { return top == capacity - 1; }
 
 template <class T>
 inline int Stack<T>::maxCapacity() { return capacity; }

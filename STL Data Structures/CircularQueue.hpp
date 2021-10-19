@@ -20,8 +20,8 @@ public:
     T dequeue();
     T peek();
 
-    bool isEmpty();
-    bool isFull();
+    bool empty();
+    bool full();
     int size();
     int maxCapacity();
 };
@@ -60,7 +60,7 @@ template <class T>
 void CircularQueue<T>::enqueue(T t) {
     if (maxCapacity() == 0) {
         reserve(1);
-    } else if (isFull()) {
+    } else if (full()) {
         reserve(capacity * 2);
     }
 
@@ -71,7 +71,7 @@ void CircularQueue<T>::enqueue(T t) {
 template <class T>
 T CircularQueue<T>::dequeue() {
     int oldFront = front;
-    if (isEmpty()) {
+    if (empty()) {
         throw std::out_of_range("Cannot dequeue from an empty queue.");
     } else if (size() == 1) {
         front = 0;
@@ -84,21 +84,21 @@ T CircularQueue<T>::dequeue() {
 
 template <class T>
 T CircularQueue<T>::peek() {
-    if (isEmpty()) {
+    if (empty()) {
         throw std::out_of_range("Cannot peek into an empty queue.");
     }
     return arr[front];
 }
 
 template <class T>
-inline bool CircularQueue<T>::isEmpty() { return rear == -1; }
+inline bool CircularQueue<T>::empty() { return rear == -1; }
 
 template <class T>
-inline bool CircularQueue<T>::isFull() { return front == (rear + 1) % capacity; }
+inline bool CircularQueue<T>::full() { return front == (rear + 1) % capacity; }
 
 template <class T>
 inline int CircularQueue<T>::size() {
-    if (isEmpty()) return 0;
+    if (empty()) return 0;
     return (rear >= front) ? rear - front + 1 : rear + n - front + 1;
 }
 
