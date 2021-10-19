@@ -70,6 +70,7 @@ T Stack<T>::pop() {
     if (empty()) {
         throw std::out_of_range("Cannot pop from an empty stack.");
     }
+    
     return arr[top--];
 }
 
@@ -78,6 +79,7 @@ T Stack<T>::peek() const {
     if (empty()) {
         throw std::out_of_range("Cannot peek into an empty stack.");
     }
+
     return arr[top];
 }
 
