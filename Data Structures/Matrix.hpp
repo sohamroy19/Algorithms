@@ -1,3 +1,6 @@
+#ifndef MATRIX_HPP
+#define MATRIX_HPP
+
 #include <cassert>
 #include <iostream>
 #include <vector>
@@ -155,3 +158,5 @@ std::ostream &operator<<(std::ostream &os, Mat<T> const &mat) {
 
     return os;
 }
+
+#endif /* MATRIX_HPP */
