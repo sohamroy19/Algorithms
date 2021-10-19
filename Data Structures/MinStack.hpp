@@ -1,4 +1,5 @@
 #include <stack>
+#include <stdexcept>
 
 template <class T>
 class MinStack {
@@ -28,11 +29,19 @@ void MinStack<T>::push(T t) {
 
 template <class T>
 inline T MinStack<T>::top() const {
+    if (empty()) {
+        throw std::out_of_range("Cannot peek into an empty stack.");
+    }
+
     return st.top().first;
 }
 
 template <class T>
 inline void MinStack<T>::pop() {
+    if (empty()) {
+        throw std::out_of_range("Cannot pop from an empty stack.");
+    }
+
     st.pop();
 }
 
