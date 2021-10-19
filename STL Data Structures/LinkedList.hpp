@@ -25,13 +25,13 @@ public:
 
     void push(T t);
     T pop();
-    T peek();
+    T peek() const;
 
     void insert(T t, int index);
     void remove(int index);
 
-    bool empty();
-    int size();
+    bool empty() const;
+    int size() const;
 };
 
 template <class T>
@@ -61,7 +61,7 @@ T LinkedList<T>::pop() {
 }
 
 template <class T>
-T LinkedList<T>::peek() {
+T LinkedList<T>::peek() const {
     if (empty()) {
         throw std::out_of_range("Cannot peek into an empty linked list.");
     }
@@ -108,9 +108,9 @@ void LinkedList<T>::remove(int index) {
 }
 
 template <class T>
-inline bool LinkedList<T>::empty() { return size() == 0; }
+inline bool LinkedList<T>::empty() const { return size() == 0; }
 
 template <class T>
-inline int LinkedList<T>::size() { return currentSize; }
+inline int LinkedList<T>::size() const { return currentSize; }
 
 #endif /* LINKED_LIST_HPP */

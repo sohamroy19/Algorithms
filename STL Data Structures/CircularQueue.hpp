@@ -18,12 +18,12 @@ public:
     void reserve(int newCapacity);
     void enqueue(T t);
     T dequeue();
-    T peek();
+    T peek() const;
 
-    bool empty();
-    bool full();
-    int size();
-    int maxCapacity();
+    bool empty() const;
+    bool full() const;
+    int size() const;
+    int maxCapacity() const;
 };
 
 template <class T>
@@ -83,7 +83,7 @@ T CircularQueue<T>::dequeue() {
 }
 
 template <class T>
-T CircularQueue<T>::peek() {
+T CircularQueue<T>::peek() const {
     if (empty()) {
         throw std::out_of_range("Cannot peek into an empty queue.");
     }
@@ -91,18 +91,18 @@ T CircularQueue<T>::peek() {
 }
 
 template <class T>
-inline bool CircularQueue<T>::empty() { return rear == -1; }
+inline bool CircularQueue<T>::empty() const { return rear == -1; }
 
 template <class T>
-inline bool CircularQueue<T>::full() { return front == (rear + 1) % capacity; }
+inline bool CircularQueue<T>::full() const { return front == (rear + 1) % capacity; }
 
 template <class T>
-inline int CircularQueue<T>::size() {
+inline int CircularQueue<T>::size() const {
     if (empty()) return 0;
     return (rear >= front) ? rear - front + 1 : rear + n - front + 1;
 }
 
 template <class T>
-inline int CircularQueue<T>::maxCapacity() { return capacity; }
+inline int CircularQueue<T>::maxCapacity() const { return capacity; }
 
 #endif /* CIRCULAR_QUEUE_HPP */

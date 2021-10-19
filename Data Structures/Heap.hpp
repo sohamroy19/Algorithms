@@ -22,12 +22,12 @@ public:
     void reserve(int newCapacity);
     void push(T t);
     T pop();
-    T peek();
+    T peek() const;
 
-    bool empty();
-    bool full();
-    int maxCapacity();
-    int size();
+    bool empty() const;
+    bool full() const;
+    int maxCapacity() const;
+    int size() const;
 };
 
 template <class T>
@@ -104,7 +104,7 @@ T Heap<T>::pop() {
 }
 
 template <class T>
-T Heap<T>::peek() {
+T Heap<T>::peek() const {
     if (empty()) {
         throw std::out_of_range("Cannot peek into an empty heap.");
     }
@@ -113,15 +113,15 @@ T Heap<T>::peek() {
 }
 
 template <class T>
-inline bool Heap<T>::empty() { return size() == 0; }
+inline bool Heap<T>::empty() const { return size() == 0; }
 
 template <class T>
-inline bool Heap<T>::full() { return size() == maxCapacity(); }
+inline bool Heap<T>::full() const { return size() == maxCapacity(); }
 
 template <class T>
-inline int Heap<T>::maxCapacity() { return capacity; }
+inline int Heap<T>::maxCapacity() const { return capacity; }
 
 template <class T>
-inline int Heap<T>::size() { return currentSize; }
+inline int Heap<T>::size() const { return currentSize; }
 
 #endif /* HEAP_HPP */

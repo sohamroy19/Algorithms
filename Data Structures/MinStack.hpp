@@ -12,8 +12,8 @@ public:
     T top() const;
     void pop();
 
-    int size();
-    bool empty();
+    int size() const;
+    bool empty() const;
 };
 
 template <class T>
@@ -37,11 +37,11 @@ inline void MinStack<T>::pop() {
 }
 
 template <class T>
-inline int MinStack<T>::size() {
+inline int MinStack<T>::size() const {
     return st.size();
 }
 
 template <class T>
-inline bool MinStack<T>::empty() {
-    return st.empty();
+inline bool MinStack<T>::empty() const {
+    return st.empty() const;
 }

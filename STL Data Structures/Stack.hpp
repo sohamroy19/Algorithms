@@ -18,12 +18,12 @@ public:
     void reserve(int newCapacity);
     void push(T t);
     T pop();
-    T peek();
+    T peek() const;
 
-    bool empty();
-    bool full();
-    int maxCapacity();
-    int size();
+    bool empty() const;
+    bool full() const;
+    int maxCapacity() const;
+    int size() const;
 };
 
 template <class T>
@@ -74,7 +74,7 @@ T Stack<T>::pop() {
 }
 
 template <class T>
-T Stack<T>::peek() {
+T Stack<T>::peek() const {
     if (empty()) {
         throw std::out_of_range("Cannot peek into an empty stack.");
     }
@@ -82,15 +82,15 @@ T Stack<T>::peek() {
 }
 
 template <class T>
-inline bool Stack<T>::empty() { return top == -1; }
+inline bool Stack<T>::empty() const { return top == -1; }
 
 template <class T>
-inline bool Stack<T>::full() { return top == capacity - 1; }
+inline bool Stack<T>::full() const { return top == capacity - 1; }
 
 template <class T>
-inline int Stack<T>::maxCapacity() { return capacity; }
+inline int Stack<T>::maxCapacity() const { return capacity; }
 
 template <class T>
-inline int Stack<T>::size() { return top + 1; }
+inline int Stack<T>::size() const { return top + 1; }
 
 #endif /* STACK_HPP */

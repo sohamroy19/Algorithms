@@ -18,12 +18,12 @@ public:
     void reserve(int newCapacity);
     void enqueue(T t);
     T dequeue();
-    T peek();
+    T peek() const;
 
-    bool empty();
-    bool full();
-    int maxCapacity();
-    int size();
+    bool empty() const;
+    bool full() const;
+    int maxCapacity() const;
+    int size() const;
 };
 
 template <class T>
@@ -80,7 +80,7 @@ T Queue<T>::dequeue() {
 }
 
 template <class T>
-T Queue<T>::peek() {
+T Queue<T>::peek() const {
     if (empty()) {
         throw std::out_of_range("Cannot peek into an empty queue.");
     }
@@ -88,15 +88,15 @@ T Queue<T>::peek() {
 }
 
 template <class T>
-inline bool Queue<T>::empty() { return size() == 0; }
+inline bool Queue<T>::empty() const { return size() == 0; }
 
 template <class T>
-inline bool Queue<T>::full() { return rear == capacity - 1; }
+inline bool Queue<T>::full() const { return rear == capacity - 1; }
 
 template <class T>
-inline int Queue<T>::maxCapacity() { return capacity; }
+inline int Queue<T>::maxCapacity() const { return capacity; }
 
 template <class T>
-inline int Queue<T>::size() { return rear - front + 1; }
+inline int Queue<T>::size() const { return rear - front + 1; }
 
 #endif /* QUEUE_HPP */

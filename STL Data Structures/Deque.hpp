@@ -26,10 +26,10 @@ public:
     void enqueue(T t);
     T dequeue();
 
-    bool empty();
-    bool full();
-    int maxCapacity();
-    int size();
+    bool empty() const;
+    bool full() const;
+    int maxCapacity() const;
+    int size() const;
 };
 
 template <class T>
@@ -140,18 +140,18 @@ template <class T>
 inline T Deque<T>::dequeue() { return popFront(); }
 
 template <class T>
-inline bool Deque<T>::empty() { return rear == -1; }
+inline bool Deque<T>::empty() const { return rear == -1; }
 
 template <class T>
-inline bool Deque<T>::full() { return front == (rear + 1) % capacity; }
+inline bool Deque<T>::full() const { return front == (rear + 1) % capacity; }
 
 template <class T>
-inline int Deque<T>::maxCapacity() { return capacity; }
+inline int Deque<T>::maxCapacity() const { return capacity; }
 
 template <class T>
-inline int Deque<T>::size() {
+inline int Deque<T>::size() const {
     return empty() ? 0 : (rear >= front) ? rear - front + 1
-                                           : rear + n - front + 1;
+                                         : rear + n - front + 1;
 }
 
 #endif /* DEQUE_HPP */

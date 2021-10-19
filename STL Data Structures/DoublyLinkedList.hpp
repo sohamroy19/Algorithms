@@ -27,13 +27,13 @@ public:
 
     void push(T t);
     T pop();
-    T peek();
+    T peek() const;
 
     void insert(T t, int index);
     void remove(int index);
 
-    bool empty();
-    int size();
+    bool empty() const;
+    int size() const;
 };
 
 template <class T>
@@ -64,7 +64,7 @@ T DoublyLinkedList<T>::pop() {
 }
 
 template <class T>
-T DoublyLinkedList<T>::peek() {
+T DoublyLinkedList<T>::peek() const {
     if (empty()) {
         throw std::out_of_range("Cannot peek into an empty linked list.");
     }
@@ -117,9 +117,9 @@ void DoublyLinkedList<T>::remove(int index) {
 }
 
 template <class T>
-inline bool DoublyLinkedList<T>::empty() { return size() == 0; }
+inline bool DoublyLinkedList<T>::empty() const { return size() == 0; }
 
 template <class T>
-inline int DoublyLinkedList<T>::size() { return currentSize; }
+inline int DoublyLinkedList<T>::size() const { return currentSize; }
 
 #endif /* DOUBLY_LINKED_LIST_HPP */
