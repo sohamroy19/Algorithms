@@ -16,7 +16,8 @@ using namespace std;
 using ll = long long;
 using vi = vector<int>;
 using vvi = vector<vi>;
-using vpi = vector<pair<int, int>>;
+using pii = pair<int, int>;
+using vpi = vector<pii>;
 
 void solve() {
     int n;
