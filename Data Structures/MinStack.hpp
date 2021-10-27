@@ -19,11 +19,15 @@ public:
 
 template <class T>
 inline T MinStack<T>::min() const {
+    if (empty()) {
+        throw std::out_of_range("Cannot peek into an empty stack.");
+    }
+
     return st.top().second;
 }
 
 template <class T>
-void MinStack<T>::push(T t) {
+inline void MinStack<T>::push(T t) {
     st.push({t, std::min(t, min())});
 }
 
