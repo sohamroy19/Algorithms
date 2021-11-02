@@ -3,7 +3,7 @@
  * Average    : O(nlogn)
  * Best case  : O(nlogn)
  * 
- * Space      : O(n)
+ * Space      :   O(n)
  */
 
 #include <iostream>
