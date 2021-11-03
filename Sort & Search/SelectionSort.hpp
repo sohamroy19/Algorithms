@@ -3,7 +3,7 @@
  * Average    : O(n^2) comparisons, O(n) swaps
  * Best case  : O(n^2) comparisons, O(1) swaps
  * 
- * Space      : O(1)
+ * Space      :  O(1)
  */
 
 #include <vector>
