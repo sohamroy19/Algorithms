@@ -1,4 +1,7 @@
 /**
+ * Horner's method of evaluating the value of a polynomial
+ * https://en.wikipedia.org/wiki/Horner%27s_method
+ * 
  * Time  : O(n)
  * Space : O(1)
  */
@@ -22,7 +25,7 @@ int main() {
     int n;
     std::cin >> n;
 
-    std::cout << "\nEnter the coefficients of the polynomial:\n";
+    std::cout << "\nEnter the coefficients of the polynomial:-\n";
     std::vector<double> coeffs(n + 1);
     for (int i = 0; i <= n; ++i) {
         std::cout << "a_" << i << ": ";
