@@ -10,7 +10,7 @@
 #include <vector>
 
 template <class T>
-T horner(std::vector<T> &coeffs, T x) {
+T horner(const std::vector<T> &coeffs, T x) {
     double result = 0;
 
     for (int i = coeffs.size() - 1; i >= 0; --i) {
