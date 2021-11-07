@@ -3,7 +3,6 @@
 
 #include <memory>
 #include <queue>
-#include <stdexcept>
 #include <vector>
 
 template <class T>
