@@ -1,5 +1,6 @@
 /**
  * https://en.wikipedia.org/wiki/Levenshtein_distance
+ * https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm
  */
 
 #include <algorithm>
