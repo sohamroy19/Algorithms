@@ -12,7 +12,7 @@ private:
 
 public:
     SegmentTree(const std::vector<T> &arr, T (*f)(T, T))
-        : tree(std::vector<T>(4 * arr.size())), size(arr.size()), merge(f) {
+        : tree(4 * arr.size()), size(arr.size()), merge(f) {
         build(arr, 0, 0, size - 1);
     }
 
