@@ -19,7 +19,6 @@ public:
     void build(const std::vector<T> &arr, int node, int start, int end) {
         if (start == end) {
             tree[node] = arr[start];
-            cout << node << " " << tree[node] << endl;
             return;
         }
 
@@ -27,8 +26,6 @@ public:
         build(arr, 2 * node + 1, start, mid);
         build(arr, 2 * node + 2, mid + 1, end);
         tree[node] = merge(tree[2 * node + 1], tree[2 * node + 2]);
-
-        cout << node << " " << tree[node] << endl;
     }
 
     T query(int start, int end) {
