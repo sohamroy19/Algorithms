@@ -8,7 +8,7 @@ class SegmentTree {
 private:
     std::vector<T> tree;
     int size;
-    T (*merge) (T, T);
+    T (*merge)(T, T);
 
 public:
     SegmentTree(const std::vector<T> &arr, T (*f)(T, T))
@@ -33,16 +33,20 @@ public:
     }
 
     T query(int node, int start, int end, int left, int right) {
-        if (left > end || right < start) {
-            return 0;
-        }
-
-        if (start >= left && end <= right) {
+        if (start == left && end == right) {
             return tree[node];
         }
 
         int mid = (start + end) / 2;
-        return merge(query(2 * node + 1, start, mid, left, right), query(2 * node + 2, mid + 1, end, left, right));
+
+        if (mid > right) {
+            return query(2 * node + 1, start, mid, left, right);
+        } else if (mid < left) {
+            return query(2 * node + 2, mid + 1, end, left, right);
+        } else {
+            return merge(query(2 * node + 1, start, mid, left, mid),
+                         query(2 * node + 2, mid + 1, end, mid + 1, right));
+        }
     }
 
     void update(int pos, T val) {
