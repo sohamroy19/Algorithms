@@ -55,7 +55,7 @@ void Heap<T>::heapifySubtree(int index) {
     int l = 2 * index + 1, r = 2 * index + 2;
     int target = index;
 
-    if (arr[l] > arr[target]) target = l;
+    if (l < currentSize && arr[l] > arr[target]) target = l;
     if (r < currentSize && arr[r] > arr[target]) target = r;
 
     if (target != index) {
